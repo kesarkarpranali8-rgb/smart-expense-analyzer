@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Smart Expense Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                $
+            </div>
+
+            <div>
+                <h2>Smart Expense</h2>
+                <span>Analyzer</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="#dashboard" class="nav-link active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="#transactions" class="nav-link">
+                <span>▤</span>
+                Transactions
+            </a>
+
+            <a href="#expense-form" class="nav-link">
+                <span>＋</span>
+                Add Expense
+            </a>
+
+            <a href="#budget-form" class="nav-link">
+                <span>◫</span>
+                Budget
+            </a>
+
+            <a href="#analytics" class="nav-link">
+                <span>◔</span>
+                Analytics
+            </a>
+
+            <a href="#insights" class="nav-link">
+                <span>✦</span>
+                Insights
+            </a>
+
+            <a href="#settings" class="nav-link">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-profile">
+
+                <div
+                    class="mini-avatar"
+                    id="sidebar-avatar"
+                >
+                    P
+                </div>
+
+                <div>
+                    <strong id="sidebar-profile-name">
+                        Pranali
+                    </strong>
+
+                    <small>
+                        Personal account
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="top-label">
+                    PERSONAL FINANCE
+                </p>
+
+                <h1>
+                    Smart Expense Analyzer
+                </h1>
+
+            </div>
+
+
+            <button
+                class="profile-button"
+                id="profile-button"
+                type="button"
+            >
+
+                <div
+                    class="profile-avatar"
+                    id="top-profile-avatar"
+                >
+                    P
+                </div>
+
+                <div class="profile-button-text">
+
+                    <strong id="top-profile-name">
+                        Pranali
+                    </strong>
+
+                    <small>
+                        View profile
+                    </small>
+
+                </div>
+
+            </button>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PROFILE DISPLAY POPUP
+        ================================================== -->
+
+        <div
+            class="profile-popup-overlay"
+            id="profile-popup"
+        >
+
+            <div class="profile-popup">
+
+                <button
+                    class="close-popup"
+                    id="profile-close"
+                    type="button"
+                >
+                    ×
+                </button>
+
+
+                <div class="profile-popup-header">
+
+                    <div
+                        class="profile-large-avatar"
+                        id="profile-display-avatar"
+                    >
+                        P
+                    </div>
+
+                    <h2 id="profile-name-display">
+                        Pranali
+                    </h2>
+
+                    <p>
+                        Personal Finance Profile
+                    </p>
+
+                </div>
+
+
+                <div class="profile-details">
+
+                    <div class="profile-detail-item">
+
+                        <span>Name</span>
+
+                        <strong id="profile-display-name">
+                            Pranali
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail-item">
+
+                        <span>Email</span>
+
+                        <strong id="profile-display-email">
+                            pranali@example.com
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail-item">
+
+                        <span>Monthly Income</span>
+
+                        <strong id="profile-display-income">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-button"
+                    id="edit-profile-btn"
+                    type="button"
+                >
+                    Edit Profile
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PROFILE EDIT PANEL
+        ================================================== -->
+
+        <section
+            class="profile-panel"
+            id="profile-panel"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="small-label">
+                        PROFILE SETTINGS
+                    </p>
+
+                    <h2>
+                        Edit Profile
+                    </h2>
+
+                </div>
+
+                <button
+                    class="close-section"
+                    id="close-profile"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <label for="edit-profile-name">
+                Name
+            </label>
+
+            <input
+                type="text"
+                id="edit-profile-name"
+                placeholder="Enter your name"
+            >
+
+
+            <label for="edit-profile-email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="edit-profile-email"
+                placeholder="Enter your email"
+            >
+
+
+            <label for="edit-profile-income">
+                Monthly Income
+            </label>
+
+            <input
+                type="number"
+                id="edit-profile-income"
+                placeholder="Enter monthly income"
+                min="0"
+            >
+
+
+            <div class="profile-actions">
+
+                <button
+                    class="secondary-button"
+                    id="cancel-profile"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="primary-button"
+                    id="save-profile"
+                    type="button"
+                >
+                    Save Profile
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section id="dashboard" class="page-section">
+
+
+            <!-- BALANCE CARD -->
+
+            <div class="balance-card">
+
+                <div class="balance-left">
+
+                    <p>
+                        TOTAL BALANCE
+                    </p>
+
+                    <h2 id="total-balance">
+                        ₹0
+                    </h2>
+
+                    <span>
+                        Available balance
+                    </span>
+
+                </div>
+
+
+                <div class="balance-right">
+
+                    <p>
+                        Monthly overview
+                    </p>
+
+                    <strong id="balance-status">
+                        Start tracking
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ADD EXPENSE
+            ================================================== -->
+
+            <section
+                class="card expense-form"
+                id="expense-form"
+            >
+
+                <div class="form-heading">
+
+                    <div>
+
+                        <p class="small-label">
+                            NEW TRANSACTION
+                        </p>
+
+                        <h2>
+                            Add Expense
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="expense-name">
+                            Expense Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="expense-name"
+                            placeholder="e.g. Lunch"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="expense-amount">
+                            Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="expense-amount"
+                            placeholder="e.g. 500"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="expense-category">
+                            Category
+                        </label>
+
+                        <select id="expense-category">
+
+                            <option value="Food">
+                                Food
+                            </option>
+
+                            <option value="Travel">
+                                Travel
+                            </option>
+
+                            <option value="Education">
+                                Education
+                            </option>
+
+                            <option value="Shopping">
+                                Shopping
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="payment-method">
+                            Payment Method
+                        </label>
+
+                        <select id="payment-method">
+
+                            <option value="UPI">
+                                UPI
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="Card">
+                                Card
+                            </option>
+
+                            <option value="Bank">
+                                Bank Transfer
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="primary-button full-button"
+                    id="save-expense"
+                    type="button"
+                >
+                    Add Expense
+                </button>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+            ================================================== -->
+
+            <div class="summary-grid">
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon income-icon">
+                        ↑
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Income
+                        </span>
+
+                        <h3 id="total-income">
+                            ₹0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon expense-icon">
+                        ↓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Expenses
+                        </span>
+
+                        <h3 id="total-expenses">
+                            ₹0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon budget-icon">
+                        ◫
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Monthly Budget
+                        </span>
+
+                        <h3 id="monthly-budget">
+                            ₹0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon balance-icon">
+                        %
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Balance Status
+                        </span>
+
+                        <h3 id="balance-percentage">
+                            0%
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INCOME
+            ================================================== -->
+
+            <section
+                class="card income-form"
+                id="income-form"
+            >
+
+                <p class="small-label">
+                    MONTHLY INCOME
+                </p>
+
+                <h2>
+                    Set Monthly Income
+                </h2>
+
+                <label for="income-amount">
+                    Income Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="income-amount"
+                    placeholder="e.g. 30000"
+                    min="1"
+                >
+
+                <button
+                    class="primary-button full-button"
+                    id="save-income"
+                    type="button"
+                >
+                    Save Income
+                </button>
+
+            </section>
+
+
+            <button
+                class="secondary-button income-toggle"
+                id="set-income-btn"
+                type="button"
+            >
+                Set / Change Income
+            </button>
+
+
+
+            <!-- =================================================
+                 BUDGET
+            ================================================== -->
+
+            <section
+                class="card budget-form"
+                id="budget-form"
+            >
+
+                <p class="small-label">
+                    MONTHLY PLANNING
+                </p>
+
+                <h2>
+                    Set Monthly Budget
+                </h2>
+
+
+                <label for="budget-amount">
+                    Budget Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="budget-amount"
+                    placeholder="e.g. 10000"
+                    min="1"
+                >
+
+
+                <button
+                    class="primary-button full-button"
+                    id="save-budget"
+                    type="button"
+                >
+                    Set Budget
+                </button>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DASHBOARD CHART
+            ================================================== -->
+
+            <section class="card dashboard-chart">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <p class="small-label">
+                            SPENDING
+                        </p>
+
+                        <h2>
+                            Expense Overview
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas id="monthlyChart"></canvas>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYTICS
+        ================================================== -->
+
+        <section
+            id="analytics"
+            class="page-section"
+        >
+
+            <div class="page-title">
+
+                <p class="small-label">
+                    ANALYTICS
+                </p>
+
+                <h2>
+                    Monthly Analytics
+                </h2>
+
+                <p>
+                    Understand your spending patterns and monthly
+                    financial activity.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-stats">
+
+                <div class="analytics-stat">
+
+                    <span>
+                        This Month Spending
+                    </span>
+
+                    <strong id="this-month-spending">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="analytics-stat">
+
+                    <span>
+                        Average Monthly Spending
+                    </span>
+
+                    <strong id="average-monthly-spending">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <div class="analytics-stat">
+
+                    <span>
+                        Highest Spending Month
+                    </span>
+
+                    <strong id="highest-spending-month">
+                        No data
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-grid">
+
+                <div class="card chart-card">
+
+                    <h3>
+                        Monthly Spending
+                    </h3>
+
+                    <div class="chart-container">
+
+                        <canvas id="monthlyChart"></canvas>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card chart-card">
+
+                    <h3>
+                        Spending by Category
+                    </h3>
+
+                    <div class="chart-container doughnut-container">
+
+                        <canvas id="categoryChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRANSACTIONS
+        ================================================== -->
+
+        <section
+            id="transactions"
+            class="page-section"
+        >
+
+            <div class="page-title">
+
+                <p class="small-label">
+                    TRANSACTIONS
+                </p>
+
+                <h2>
+                    Your Expenses
+                </h2>
+
+            </div>
+
+
+            <div class="card transactions-card">
+
+                <div class="transaction-header">
+
+                    <h3>
+                        Recent Transactions
+                    </h3>
+
+                    <input
+                        type="search"
+                        id="search-expense"
+                        placeholder="Search expenses..."
+                    >
+
+                </div>
+
+
+                <div class="transaction-table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Expense
+                                </th>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Payment
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="transaction-list">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="empty-transactions"
+                >
+
+                    <div>
+                        ◌
+                    </div>
+
+                    <h3>
+                        No expenses yet
+                    </h3>
+
+                    <p>
+                        Add your first expense to start analyzing
+                        your spending.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             INSIGHTS
+        ================================================== -->
+
+        <section
+            id="insights"
+            class="page-section"
+        >
+
+            <div class="page-title">
+
+                <p class="small-label">
+                    SMART INSIGHTS
+                </p>
+
+                <h2>
+                    Spending Insights
+                </h2>
+
+                <p>
+                    Helpful observations based on your expense data.
+                </p>
+
+            </div>
+
+
+            <div
+                class="insights-container"
+                id="insights-container"
+            >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SETTINGS
+        ================================================== -->
+
+        <section
+            id="settings"
+            class="page-section"
+        >
+
+            <div class="page-title">
+
+                <p class="small-label">
+                    SETTINGS
+                </p>
+
+                <h2>
+                    App Settings
+                </h2>
+
+            </div>
+
+
+            <div class="card settings-card">
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Dark Mode
+                        </strong>
+
+                        <p>
+                            Change the appearance of the dashboard.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <input
+                            type="checkbox"
+                            id="theme-toggle"
+                        >
+
+                        <span class="slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <div class="setting-row">
+
+                    <div>
+
+                        <strong>
+                            Currency
+                        </strong>
+
+                        <p>
+                            Choose the currency used throughout
+                            the dashboard.
+                        </p>
+
+                    </div>
+
+
+                    <select id="currency-select">
+
+                        <option value="₹">
+                            ₹ INR
+                        </option>
+
+                        <option value="$">
+                            $ USD
+                        </option>
+
+                        <option value="€">
+                            € EUR
+                        </option>
+
+                        <option value="£">
+                            £ GBP
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="setting-row danger-row">
+
+                    <div>
+
+                        <strong>
+                            Clear All Data
+                        </strong>
+
+                        <p>
+                            Remove all saved expenses, income,
+                            budget and profile information.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="danger-button"
+                        id="clear-data-btn"
+                        type="button"
+                    >
+                        Clear Data
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <p>
+                Smart Expense Analyzer
+            </p>
+
+            <span>
+                Track • Analyze • Improve
+            </span>
+
+        </footer>
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
